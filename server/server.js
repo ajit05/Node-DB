@@ -20,7 +20,7 @@ app.post('/todos', (req, res) => {
     res.status(400).send(e);
   });
 });
-//gte route
+//get route
 
 app.get('/todos',(req,res)=>
 {
@@ -30,8 +30,8 @@ app.get('/todos',(req,res)=>
   },(err)=>
   {
     return err;
-  })
-})
+  });
+});
 app.listen(3000, () => {
   console.log('Started on port 3000');
 });
