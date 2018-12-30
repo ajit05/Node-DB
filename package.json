@@ -4,8 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha server/**/*test.js",
+    "start": "node server/server.js",
+    "nodemon-server": "SET \"NODE_ENV=dev\" && nodemon server/server.js",
+    "node-server": "SET \"NODE_ENV=prod\" && node server/server.js",
+    "test": "export NODE_ENV=test|| SET \"NODE_ENV=test\" && mocha server/**/*test.js",
     "test-watch":"nodemon --exec npm test"
+  },
+  "engines":
+  {
+    "node":"8.11.3"
   },
   "author": "Ajit Tripathy",
   "license": "ISC",
@@ -23,3 +30,6 @@
     "supertext": "^1.0.0"
   }
 }
+
+
+

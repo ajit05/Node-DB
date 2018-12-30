@@ -1,3 +1,4 @@
+var env=require('./config/config')
 var express = require('express');
 var bodyParser = require('body-parser');
 var {mongoose} = require('../DB/mongoose');
@@ -52,5 +53,22 @@ app.get('/todos/:id', (req, res) => {
 app.listen(3000, () => {
   console.log(`server start at port ${port}`);
 });
-
+app.delete('/todos/:id',(req,res)=>
+{
+  var id=req.params.id;
+  if(!ObjectID.isValid(id))
+      return res.status(404).send();
+  Todo.findByIdAndRemove(id).then((todo)=>
+  {
+    if(!todo)
+      res.status(404).send();
+    res.send(todo);
+  },(err)=>
+  {
+    res.status(404).send();
+  }).catch((e)=>
+  {
+    res.status(400).send();
+  });
+});
 module.exports={app};
