@@ -6,6 +6,7 @@ var {User} = require('../Model/users');
 var {ObjectID} = require('mongodb')
 //var {queryDB}=require('../playground/mongoose-query')
 var app = express();
+const port=process.env.PORT||3000;
 app.use(bodyParser.json());
 //post route 
 app.post('/todos', (req, res) => {
@@ -49,7 +50,7 @@ app.get('/todos/:id', (req, res) => {
   });
 });
 app.listen(3000, () => {
-  console.log('Started on port 3000');
+  console.log(`server start at port ${port}`);
 });
 
 module.exports={app};
